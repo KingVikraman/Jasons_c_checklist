@@ -1,0 +1,293 @@
+1) Basics
+=================================================
+- Variable naming rules[/]
+- What is an uninitialized (garbage) value?[/]
+- Keywords (reserved words in C)[/]
+- Data types and their respective sizes[/]
+- Syntax for variable declaration[]
+- Constants (const keyword, #define macros)[]
+
+2) Arrays
+=================================================
+- How to declare an array[]
+- How arrays are stored in memory[]
+- How to access elements in an array[]
+- What happens when accessing memory outside the array bounds[]
+- Benefits of traversing an array vs. pointer arithmetic[]
+- Multi-dimensional arrays[]
+
+3) Operators
+================================================
+- Arithmetic operators (+, -, *, /, %)[]
+- Relational operators (==, !=, >, <, >=, <=)[]
+- Logical operators (&&, ||, !)[]
+- Assignment operators (=, +=, -=, *=, /=, %=)[]
+- Increment (++) and decrement (--) operators[]
+
+4) Control Statements
+===============================================
+- if, else if, else[]
+- Loops (for, while, do-while)[]
+- break and continue statements[]
+
+5) Functions
+===============================================
+- Syntax for function declaration[]
+- Function prototypes[]
+- Pass by value, pass by reference (using pointers)[]
+- Returning values (by value, by pointer, by reference)[]
+
+6) Pointers
+===============================================
+- What is a pointer?[]
+- Declaring and initializing pointers[]
+- Pointer arithmetic[]
+- Null pointers[]
+- Pointer to pointer (**)[]
+
+
+7) Dynamic Memory Allocation
+===============================================
+- When to use dynamic memory:[]
+ * Outside of function scope[]
+ * Large data allocations[]
+ * When the size is unknown at compile time[]
+- malloc() free()[]
+- Memory leaks and how to prevent them[]
+
+8) File I/O
+===============================================
+- How to read from and write to files[]
+- Libraries used for file I/O[]
+- Error handling in file operations[]
+
+
+9) Structs
+===============================================
+- How to declare struct[]
+- How to create a struct variable[]
+- Using typedef for aliasing[]
+- Accessing struct members (dot . and arrow -> operators)[]
+- Nested structs[]
+- Array of structs[]
+
+10) Linked Lists
+===============================================
+- What is a linked list?[]
+- Difference between linked lists and arrays[]
+- How to define a linked list node using struct[]
+- How to insert a node (at the beginning, middle, end)[]
+- How to delete a node[]
+- How to traverse a linked list[]
+- Doubly linked lists (advantages, structure, insertion, deletion)[]
+
+11) Preprocessor Directives & Macros
+===============================================
+- #define macros
+- Conditional compilation (#ifdef, #ifndef, #endif, #if, #else, #elif)
+- #include directive for including libraries
+
+12) Libraries to Know
+===============================================
+unistd.h
+stdio.h
+stdlib.h
+math.h
+string.h
+ctype.h
+stdbool.h
+limits.h
+fcntl.h
+
+
+13) Miscellaneous Topics
+===============================================
+- Stack vs. Heap memory allocation[]
+- Global variables vs. static variables[]
+- Type casting ((int), static_cast<>, reinterpret_cast<> in C++)[]
+- Variadic functions (stdarg.h, va_list)[]
+- Command-line arguments (argc, argv[])[]
+
+
+
+
+
+
+
+
+
+
+Explaination:
+
+1) Basics
+==================================================
+i)	Well Variable naming rules are pretty simple, when you wanna declare a variable the naming
+ has to be in alphabets like A-Z or a-z, numbers like 1 - 9, and cannot have spaces, if you
+ would like to add spaces then you can replace that with a '_' (underscore).We cannot use 
+ Keywords, special characters or space. Be case-sensitive and use meaningfull names.
+ Stick to camelCase and snake_case.
+
+ii)	Uninitialized variables is a garbage value, or more of a non-return variable, so how this
+ works is that when you declare a variable and turns out you didn't assingn anything to it, 
+ so it becomes a garbage value.
+
+iii)	Okay so, what is like the reserved words in c, like for example Data types, Control Flow,
+ Storage Class Specifiers, Fucntion-Related, Memeory Managment, Structure & Union, 
+ Pointers & Type Casting, and finally the Special Keywords in Multi-threading & Error Handling.
+
+iv)	Data types and their sizes:
+
+	1️⃣ Basic Data Types:
+	------------------------------------------------------------------------------------
+	| Data types	| Size(in bytes)	| Range (approximetly) 			   |
+	------------------------------------------------------------------------------------
+	| Char		| 1 byte		| -128 to 127(signed), 0 to 225(unsigned)  |
+	| Int		| 4 bytes		| -2,147,483,648 to 2,147,483,647(signed)  |
+	| Float		| 4 bytes		| ~6 decimal places(single presicion)      |
+	| Double	| 8 bytes		| ~15 decimal places(double precision)     |
+	| Void		| 0 bytes		| Used fpor functions with no return type  |
+	------------------------------------------------------------------------------------
+
+	2️⃣ Integer Variants:
+		-----------------------------------------------------------
+		| Type		| Size		| Precision			|
+		-----------------------------------------------------------
+		| float		| 4 bytes		| 6-7 decimal places   |
+		| double		| 8 bytes		| 15-16 decimal places.|
+		| long double	| 16 bytes	| More than double    |
+		-----------------------------------------------------------
+
+		3️⃣ Floating-Point Variants:
+		-----------------------------------------------------------
+		| Type		| Size		| Range				|
+		-----------------------------------------------------------
+		| short int	| 2 bytes		| -32,768 to 32,767		|
+		| long int		| 4 or 8 bytes	| Large range			|
+		| long long int	| 8 bytes		| Even larger range		|
+		| unsigned int	| 4 bytes		| 0 to 4,294,967,295	|
+		-----------------------------------------------------------
+
+
+		4️⃣ Special Data Types:
+		--------------------------------------------------------
+		| Type			| Description					|
+		--------------------------------------------------------
+		|  void			| No value, used in functions		|
+	| _Bool		| Stores 0 (false) or 1 (true)	    |
+	| enum		| User-defined integer constants  |
+		--------------------------------------------------------
+
+v)	Well as for the syntax, It need to be declared before use.
+	
+	1️⃣ Basic Variable Declaration:
+	-------------------------
+		-> data_type variable_name;
+
+	Example:
+		int age;
+		char grade;
+		float price;
+		double distance;
+	
+	2️⃣ Variable Declaration with Initialization:
+	-----------------------------------
+		-> data_type variable_name = value;
+
+	Example:	
+		int age = 18;
+		 char grade = 'A';
+		float price = 9.99;
+		double distance = 1000.567;
+	
+	3️⃣ Declaring Multiple Variables of the Same Type:
+	------------------------------------------
+		-> data_type var1, var2, var3;
+
+	Example:
+		int x = 5, y = 10, z = 15;
+		float a = 1.5, b = 2.5;
+		char letter1 = 'X', letter2 = 'Y';
+
+	4️⃣ Using const for Constants:
+	-------------------------
+		-> const data_type variable_name = value;
+
+	Example:
+		const float PI = 3.14159;
+		const int MAX_SCORE = 100;
+
+	5️⃣ Pointers (Advanced):
+	--------------------
+		-> data_type *pointer_name;
+
+	Exmaple:
+		int num = 10;
+		int *ptr = &num;  // Pointer storing the address of num
+
+
+
+
+2) Arrays
+============================================
+
+i) An array is a collection of elements of the same type, stored in contiguous memory locations.
+	
+	Syntax : data_type array_name[size];
+
+	Example : int numbers[5];  // Declares an array of 5 integers
+		  char letters[10];  // Declares an array of 10 characters
+		  float prices[3] = {10.5, 20.75, 30.25};  // Initialization at declaration
+
+
+ii) Arrays in C are stored contiguously in memory, meaning that all elements are stored one 
+    after another. The address of the first element (array[0]) serves as the base address.
+	
+	For Example: int arr[3] = {10, 20, 30};
+		     Memory representation (assuming arr starts at address 1000 and int is 4 bytes):
+
+			Index	Value	Address
+			arr[0]	10	1000
+			arr[1]	20	1004
+			arr[2]	30	1008
+
+	This means arr[1] is accessed by:
+	📍 Base address (arr) + (1 * sizeof(int)) → 1000 + (1 * 4) = 1004
+
+
+iii) You can acsess elements in an array using indexing.
+	
+	Syntax : array_name[index]
+
+	Example : int number[5] = {10, 20, 30, 40, 50};
+		  printf("%d",number[2]);
+
+		  int *ptr = number;
+		  printf("%d", *(ptr + 2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
