@@ -4,52 +4,52 @@
 - What is an uninitialized (garbage) value?[/]
 - Keywords (reserved words in C)[/]
 - Data types and their respective sizes[/]
-- Syntax for variable declaration[]
-- Constants (const keyword, #define macros)[]
+- Syntax for variable declaration[/]
+- Constants (const keyword, #define macros)[/]
 
 2) Arrays
 =================================================
-- How to declare an array[]
-- How arrays are stored in memory[]
-- How to access elements in an array[]
-- What happens when accessing memory outside the array bounds[]
-- Benefits of traversing an array vs. pointer arithmetic[]
+- How to declare an array[/]
+- How arrays are stored in memory[/]
+- How to access elements in an array[/]
+- What happens when accessing memory outside the array bounds[/]
+- Benefits of traversing an array vs. pointer arithmetic[/]
 - Multi-dimensional arrays[]
 
 3) Operators
 ================================================
-- Arithmetic operators (+, -, *, /, %)[]
-- Relational operators (==, !=, >, <, >=, <=)[]
-- Logical operators (&&, ||, !)[]
-- Assignment operators (=, +=, -=, *=, /=, %=)[]
-- Increment (++) and decrement (--) operators[]
+- Arithmetic operators (+, -, *, /, %)[/]
+- Relational operators (==, !=, >, <, >=, <=)[/]
+- Logical operators (&&, ||, !)[/]
+- Assignment operators (=, +=, -=, *=, /=, %=)[/]
+- Increment (++) and decrement (--) operators[/]
 
 4) Control Statements
 ===============================================
-- if, else if, else[]
-- Loops (for, while, do-while)[]
+- if, else if, else[/]
+- Loops (for, while, do-while)[/]
 - break and continue statements[]
 
 5) Functions
 ===============================================
-- Syntax for function declaration[]
-- Function prototypes[]
-- Pass by value, pass by reference (using pointers)[]
+- Syntax for function declaration[/]
+- Function prototypes[/]
+- Pass by value, pass by reference (using pointers)[/]
 - Returning values (by value, by pointer, by reference)[]
 
 6) Pointers
 ===============================================
-- What is a pointer?[]
-- Declaring and initializing pointers[]
-- Pointer arithmetic[]
-- Null pointers[]
+- What is a pointer?[/]
+- Declaring and initializing pointers[/]
+- Pointer arithmetic[/]
+- Null pointers[/]
 - Pointer to pointer (**)[]
 
 
 7) Dynamic Memory Allocation
 ===============================================
-- When to use dynamic memory:[]
- * Outside of function scope[]
+- When to use dynamic memory:[/]
+ * Outside of function scope[/]
  * Large data allocations[]
  * When the size is unknown at compile time[]
 - malloc() free()[]
@@ -149,38 +149,38 @@ iv)	Data types and their sizes:
 	------------------------------------------------------------------------------------
 
 	2️⃣ Integer Variants:
-		-----------------------------------------------------------
-		| Type		| Size		| Precision			|
-		-----------------------------------------------------------
-		| float		| 4 bytes		| 6-7 decimal places   |
-		| double		| 8 bytes		| 15-16 decimal places.|
-		| long double	| 16 bytes	| More than double    |
-		-----------------------------------------------------------
+	---------------------------------------------------------
+	| Type		| Size		| Precision		|
+	---------------------------------------------------------
+	| float		| 4 bytes	| 6-7 decimal places	|
+	| double	| 8 bytes	| 15-16 decimal places.	|
+	| long double	| 16 bytes	| More than double	|
+	---------------------------------------------------------
 
-		3️⃣ Floating-Point Variants:
-		-----------------------------------------------------------
-		| Type		| Size		| Range				|
-		-----------------------------------------------------------
-		| short int	| 2 bytes		| -32,768 to 32,767		|
-		| long int		| 4 or 8 bytes	| Large range			|
-		| long long int	| 8 bytes		| Even larger range		|
-		| unsigned int	| 4 bytes		| 0 to 4,294,967,295	|
-		-----------------------------------------------------------
+	3️⃣ Floating-Point Variants:
+	---------------------------------------------------------
+	| Type		| Size		| Range			|
+	---------------------------------------------------------
+	| short int	| 2 bytes	| -32,768 to 32,767	|
+	| long int	| 4 or 8 bytes	| Large range		|
+	| long long int	| 8 bytes	| Even larger range	|
+	| unsigned int	| 4 bytes	| 0 to 4,294,967,295	|
+	---------------------------------------------------------
 
 
-		4️⃣ Special Data Types:
-		--------------------------------------------------------
-		| Type			| Description					|
-		--------------------------------------------------------
-		|  void			| No value, used in functions		|
-	| _Bool		| Stores 0 (false) or 1 (true)	    |
-	| enum		| User-defined integer constants  |
-		--------------------------------------------------------
+	4️⃣ Special Data Types:
+	---------------------------------------------------------
+	| Type			| Description			|
+	---------------------------------------------------------
+	|  void			| No value, used in functions	|
+	| _Bool			| Stores 0 (false) or 1 (true)	|
+	| enum			| User-defined integer constants|
+	---------------------------------------------------------
 
 v)	Well as for the syntax, It need to be declared before use.
 	
-	1️⃣ Basic Variable Declaration:
-	-------------------------
+     1️⃣ Basic Variable Declaration:
+	--------------------------
 		-> data_type variable_name;
 
 	Example:
@@ -190,7 +190,7 @@ v)	Well as for the syntax, It need to be declared before use.
 		double distance;
 	
 	2️⃣ Variable Declaration with Initialization:
-	-----------------------------------
+    	----------------------------------
 		-> data_type variable_name = value;
 
 	Example:	
@@ -200,7 +200,7 @@ v)	Well as for the syntax, It need to be declared before use.
 		double distance = 1000.567;
 	
 	3️⃣ Declaring Multiple Variables of the Same Type:
-	------------------------------------------
+	-----------------------------------------
 		-> data_type var1, var2, var3;
 
 	Example:
@@ -217,7 +217,7 @@ v)	Well as for the syntax, It need to be declared before use.
 		const int MAX_SCORE = 100;
 
 	5️⃣ Pointers (Advanced):
-	--------------------
+	---------------------
 		-> data_type *pointer_name;
 
 	Exmaple:
@@ -263,6 +263,251 @@ iii) You can acsess elements in an array using indexing.
 
 		  int *ptr = number;
 		  printf("%d", *(ptr + 2));
+
+iv) If you ever try to accsess an index that does not exist in the array, C does not give an error
+	message. Instead, it may
+	> Return garbage value.
+	> Cause a segmentation fault(crash).
+	> Overwrite memory, leading to security vulmarabilities.
+
+   Example of Bad Practice:
+	
+	int arr[3] : {1,2,3};
+	printf("%d", arr[5]);
+
+v) Both methods allows us to process elements, but each has its advantage.
+
+	---------------------------------------------------------------------------------
+	| Method			| Pros			| Cons			|
+	---------------------------------------------------------------------------------
+	| Array indexing(arr[i])	|Easy to read and 	|X Slightly slower(index|
+	|				|understand.		|calculations overhead)	|
+	|--------------------------------------------------------------------------------
+	|Pointer Arithmetic ( *		|Faster(direct memory	|X Harder to read and 	|
+	| (arr + i))			|access).		|debug.			|
+	---------------------------------------------------------------------------------
+
+	Example of Traversing Using Indexing:
+	
+	int arr[3] = {10, 20, 30};
+	for (int i = 0; i < 3; i++)
+		printf("%d", arr[i]);
+
+	Example of Traversing using pointers:
+	
+	int arr[3] = {10, 20, 30};
+	for (int i = 0; i < 3; i++)
+		printf("%d", *(arr + i));
+
+
+vi) A multidimensional array is an array of arrays.
+
+	Syntax : data_type array_name[rows][columns];
+
+	Example : int matrix[2][3] = {
+		  {1, 2, 3},
+		  {4, 5, 6}
+		  };
+	
+	Accessing the Elements ina 2d array
+		-> printf ("%d" , matrix[1][2]);
+
+
+
+
+
+5) Functions
+=========================================================
+
+i) A function should be declared before its used so the compiler know its return type and parameters.
+
+	Syntax : return_type function_name(paramenter_list);
+
+	Example : intadd(int a, int b);
+	
+	This tells the compiler:
+	>int -> functuion returns an integer. 
+	>add -> function name.
+	>(int a, int b) -> Takes two integer as parameters.
+	
+
+ii) A function prototype is a declaration before main() that tells the compiler about the function.
+
+	#include <stdio.h>
+
+	// Function prototype
+	float multiply(float x, float y);
+
+	int main() {
+   		float result = multiply(4.5, 2.0);
+		printf("Result: %.2f\n", result);
+		retrun 0;
+	}
+
+	// Function definition
+	float multiply(float x, float y) {
+    		return x * y;
+	}
+	
+	why use a prototype?
+	> it allows defining funstions later in the code.
+	> The compiler knows the function exist before main().
+
+iii) Pass by value vs pass by reference.
+
+	<> Pass by value:
+		
+		- A copy of the variable is passed to the function.
+		- Changes the inside of the function and does not effect
+		  the original variable.
+		- Used when: you dont want to modify the original value.
+	
+	<> Pass by reference(using pointers):
+
+		- The memory address of the variable is passed.
+		- Changes the inside function affect the original
+		  variable.	
+		- Used when: You wan to modify the original variable.
+
+
+
+
+
+6) Pointers
+========================================================================
+
+i) Pointers are one of the most powerful features in C. They allow direct manipulation
+   of memory, making programs more efficient and flexible.A pointer is a variable that
+   stores the memory address of another variable, Instead of holding actual data, it 	
+   holds the location of the data in memory.
+
+	> (ptr) stores the address of a data type.
+	> *ptr (dereferencing) gives us the value at the address of the data type.
+
+ii) When declaring and initialising a pointer.
+
+	Syntax: -> datatype *pointer_name;
+
+	Example: -> int a = 5;
+		    int *p = &a;
+
+iii) You can perform arithmetic operations on pointers:
+	
+	1. Increment (ptr++) -Moves to the next memory location.
+	2. Decrement (ptr--) -Moves to the previous memory location.
+	3. Addition/Subtraction(ptr + n, ptr - n) -Moves n positions
+	   in the memory.
+
+iv) A NULL pointer is a pointer that does not point to any valid memory address(Garbage Memory).
+
+	[int *p = NULL;]
+	<> Useful for avoiding dangling pointers(pointing to freed memory)
+	<>Always check if a pointer is NULL before using it.
+
+v) A pointer to a pointer stores teh address of another pointer.
+
+	Example:
+
+	#include <stdio.h>
+	
+	int main()
+	{
+		int num = 10;
+		int *ptr = &num;
+		int **ptr1 = &ptr;
+	
+		printf("Value of num: %d\n", num);
+		printf("Values using ptr: %d\n", &ptr);
+		printf("Values using ptr1: %d\N", &ptr1);
+	
+	retrun 0;
+	}
+
+	Output:
+	
+	Value of num : 10.
+	Value using ptr : 10.
+	Value using ptr1 : 10.
+	
+	<> Used in dynamic memory allocation and multilevel data structures.
+
+
+
+7) Dynamic Memory Allocation in C
+===========================================================================
+
+
+i) When do we use the dynamic memory:
+	
+	1) Outside of function scope- Memory allocated inside a function is 
+	   usually lost when function exits.
+	
+	2) Large data allocations- Stack memory is limited; Dynamic allocation
+	   helps store large amounts of data in heap.
+	
+	3) Unknown size at compile time- if users input determines the size of 
+	   data, we can allocate memory dynamically.
+
+ii) The malloc() function allocates memory from the heap, and the free() is used
+    to deallocate that memory.
+
+	Syntax:
+	
+	-> ptr = (datatype*) malloc(size_in_bytes);
+
+	Example:
+	
+	#include <stdio.h>
+	#include <stdlib.h>
+
+	int main()
+	{
+	int ptr;
+	int size = 3;
+
+	ptr = (int *) malloc(size *sizeof(int));
+
+	if (ptr ++ NULL)
+	{
+		printf("Memory allocation failed!\n")
+		return 1;
+	}
+	
+	int i = 0;
+	while (i < size)
+	{
+		ptr[i] = (i + 1) * 10;
+		i++;
+	}
+	
+	i = 0;
+	while (i < size)
+	{
+		printf("ptr[%d] = %d\n", i, ptr[i]);
+		i++;
+	}
+	free(ptr)
+	
+	return 0;
+	}
+
+
+
+iii) A Memory leak happens when allocated memory is not freed. Over time, this 
+     can consume all available memory and crash the program.
+	
+
+	<> Example of Memory Leak (BAD CODE):
+	
+	Void memoryleak()
+	{
+	int *ptr = (int*) malloc(3 * sizeof(int));
+	}
+	
+	<> How to prevent from making a bad code(GOOD CODE):
+	->Always use free(ptr) after using a dynamicly allocated memory.
+	->Set pointers to NULL after using dynamically allocated memory.
+
 
 
 
